@@ -1,7 +1,5 @@
-import add from './controllers/add.js'
-import get from './controllers/get.js'
-import getAll from './controllers/getAll.js'
-import getByName from './controllers/getByName.js'
+import { add, get, getAll, getByName } from './controllers/users.js'
+import { addGreeting, getGreeting } from './controllers/greetings.js'
 
 export const topicPrefix = `${process.env.NODE_ENV}/users/`
 
@@ -21,5 +19,13 @@ export const topics = {
   getByName: {
     responder: getByName,
     replyTopic: `${topicPrefix}getByNameReply`
+  },
+  getGreeting: {
+    responder: getGreeting,
+    replyTopic: `${topicPrefix}getGreetingReply`
+  },
+  addGreeting: {
+    responder: addGreeting,
+    replyTopic: `${topicPrefix}addGreetingReply`
   }
 }

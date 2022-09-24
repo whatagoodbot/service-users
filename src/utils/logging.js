@@ -25,7 +25,7 @@ function buildDevLogger () {
 function buildProdLogger () {
   return createLogger({
     format: combine(timestamp(), errors({ stack: true }), json()),
-    defaultMeta: { service: 'youSayISay' },
+    defaultMeta: { service: 'users' },
     transports: [new transports.Console()]
   })
 }
