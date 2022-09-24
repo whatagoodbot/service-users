@@ -1,7 +1,7 @@
 import { greetingsDb } from '../models/index.js'
 
 export const addGreeting = async (payload) => {
-  const results =  await greetingsDb.add(payload.userId, payload.greeting, payload.type)
+  const results = await greetingsDb.add(payload.userId, payload.greeting, payload.type)
   if (results.length) {
     return await greetingsDb.get(results[0])
   }
@@ -17,5 +17,4 @@ export const addGreeting = async (payload) => {
 
 export const getGreeting = async (payload) => {
   return await greetingsDb.getForUser(payload.userId)
-  
 }
