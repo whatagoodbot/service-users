@@ -4,6 +4,7 @@ import { logger } from './utils/logging.js'
 import { metrics } from './utils/metrics.js'
 import { performance } from 'perf_hooks'
 import { delay } from './utils/timing.js'
+import grpcServer from './libs/grpc.js'
 
 const topicPrefix = `${process.env.NODE_ENV}/`
 
@@ -32,6 +33,8 @@ if (broker.client.connected) {
 } else {
   broker.client.on('connect', subscribe)
 }
+
+grpcServer()
 
 broker.client.on('error', (err) => {
   logger.error({
