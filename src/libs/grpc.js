@@ -3,13 +3,7 @@ import grpc from '@grpc/grpc-js'
 import protoLoader from '@grpc/proto-loader'
 import { usersDb } from '../models/index.js'
 
-const packageDefinition = protoLoader.loadSync('./src/protos/user.proto', {
-  keepCase: true,
-  longs: String,
-  enums: String,
-  defaults: true,
-  oneofs: true
-})
+const packageDefinition = protoLoader.loadSync('./src/protos/user.proto')
 
 const userProto = grpc.loadPackageDefinition(packageDefinition)
 

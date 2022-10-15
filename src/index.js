@@ -45,10 +45,10 @@ broker.client.on('error', (err) => {
 broker.client.on('message', async (topic, data) => {
   const startTime = performance.now()
   const topicName = topic.substring(topicPrefix.length)
+  metrics.count('receivedMessage', { topicName })
   let requestPayload
   let reshapedMeta
   try {
-    metrics.count('receivedMessage', { topicName })
     requestPayload = JSON.parse(data.toString())
     reshapedMeta = reshapeMeta(requestPayload)
     const validatedRequest = broker[topicName].validate(requestPayload)
@@ -58,6 +58,7 @@ broker.client.on('message', async (topic, data) => {
 
     for (const current in processedResponses) {
       const processedResponse = processedResponses[current]
+      processedResponse.messageId = reshapedMeta.messageId
       const validatedResponse = broker[processedResponse.topic].validate({
         ...processedResponse.payload,
         meta: reshapedMeta
