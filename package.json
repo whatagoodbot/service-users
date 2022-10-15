@@ -1,6 +1,6 @@
 {
   "name": "users",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -39,10 +39,13 @@
     "standard": "^17.0.0"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.7.1",
+    "@grpc/proto-loader": "^0.7.3",
+    "hot-shots": "^9.2.0",
     "knex": "^2.3.0",
-    "mqtt": "^4.3.7",
+    "message-broker": "github:whatagoodbot/message-broker",
     "mysql": "^2.18.1",
     "winston": "^3.8.2",
-    "winston-elasticsearch": "^0.17.1"
+    "winston-syslog": "^2.6.0"
   }
 }
