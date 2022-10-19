@@ -30,7 +30,7 @@ export default (knex) => {
       if (existingUser) {
         await knex(tableName)
           .where({ id })
-          .update({ lastWelcomed: new Date() })
+          .update({ name, lastWelcomed: new Date() })
       } else {
         await knex(tableName)
           .insert({
