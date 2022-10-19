@@ -2,7 +2,7 @@ import { usersDb } from '../models/index.js'
 
 const durationUntilNextGreeting = (5 * 60) * 1000
 
-export default async payload => {
+export default async (payload, meta) => {
   const user = await usersDb.get(payload.userId)
   const userLastWelcomed = user?.lastWelcomed
   if (userLastWelcomed) {
@@ -13,7 +13,7 @@ export default async payload => {
     if (new Date() - new Date(userLastDisconnected) < durationUntilNextGreeting) return
   }
 
-  usersDb.updateLastWelcomed(payload.userId, payload.userNickname)
+  usersDb.updateLastWelcomed(meta.user.id, meta.user.nickname)
 
   return [{
     topic: 'responseRead',
