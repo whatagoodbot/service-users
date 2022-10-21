@@ -40,4 +40,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: whatagoodbot/users:latest,whatagoodbot/users:2.0.0
+          tags: whatagoodbot/users:latest,whatagoodbot/users:3.0.0
