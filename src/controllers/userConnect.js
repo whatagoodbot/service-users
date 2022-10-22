@@ -5,6 +5,9 @@ const durationUntilNextGreeting = (5 * 60) * 1000
 export default async (payload) => {
   const user = await usersDb.get(payload.user.id)
   const userLastWelcomed = user?.lastWelcomed
+  
+  usersDb.updateLastWelcomed(payload.user.id, payload.user.nickname)
+  
   if (userLastWelcomed) {
     if (new Date() - new Date(userLastWelcomed) < durationUntilNextGreeting) return
   }
@@ -13,8 +16,7 @@ export default async (payload) => {
     if (new Date() - new Date(userLastDisconnected) < durationUntilNextGreeting) return
   }
 
-  usersDb.updateLastWelcomed(payload.user.id, payload.user.nickname)
-
+  
   return [{
     topic: 'responseRead',
     payload: {
