@@ -8,9 +8,12 @@ const packageDefinition = protoLoader.loadSync('./src/protos/user.proto')
 const userProto = grpc.loadPackageDefinition(packageDefinition)
 
 const getUserDetails = async (call, callback) => {
-  const user = await usersDb.get(call.request.id)
-
-  callback(null, user)
+  if (call?.request && call?.request?.id) {
+    const user = await usersDb.get(call?.request?.id)
+    callback(null, user)
+  } else {
+    callback(null, null)
+  }
 }
 
 export default () => {
