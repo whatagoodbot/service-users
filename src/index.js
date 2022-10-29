@@ -55,6 +55,7 @@ broker.client.on('message', async (topic, data) => {
         ...processedResponse.payload
       })
       if (validatedResponse.errors) throw { message: validatedResponse.errors } // eslint-disable-line
+      if (process.env.FULLDEBUG) return
       broker.client.publish(`${topicPrefix}${processedResponse.topic}`, JSON.stringify(validatedResponse))
       await delay(250)
     }
@@ -72,6 +73,7 @@ broker.client.on('message', async (topic, data) => {
       ...requestPayload
     })
     metrics.count('error', { topicName })
+    if (process.env.FULLDEBUG) return
     broker.client.publish(`${topicPrefix}responseRead`, JSON.stringify(validatedResponse))
   }
 })
