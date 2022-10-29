@@ -4,6 +4,7 @@ message UserDetails {
     string name = 2;
     string lastWelcomed = 3;
     string lastDisconnected = 4;
+    bool admin = 5;
 }
 message UserRequest {
     string id = 1;
