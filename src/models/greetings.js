@@ -1,23 +1,26 @@
-const tableName = 'userGreetings'
+const tableName = 'greetings'
 
 export default (knex) => {
   return {
-    get: async (id) => {
-      return await knex(tableName)
-        .where({ id })
-    },
     getForUser: async (user) => {
       return await knex(tableName)
-        .whereNull('user')
-        .orWhere({ user })
+        .where({ user })
     },
-    add: async (user, greeting, type) => {
+    getGeneric: async () => {
+      return await knex(tableName)
+        .whereNull('user')
+    },
+    add: async (user, greeting) => {
       return await knex(tableName)
         .insert({
           user,
-          type,
           greeting
         })
+    },
+    delete: async (user) => {
+      return await knex(tableName)
+        .where({ user })
+        .del()
     }
   }
 }
