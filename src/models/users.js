@@ -40,10 +40,10 @@ export default (knex) => {
           })
       }
     },
-    updateLastDisconnected: async (id) => {
+    updateLastDisconnected: async (id, name) => {
       await knex(tableName)
         .where({ id })
-        .update({ lastDisconnected: new Date() })
+        .update({ name, lastDisconnected: new Date() })
     }
   }
 }
