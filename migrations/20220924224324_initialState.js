@@ -11,7 +11,7 @@ export const up = (knex) => {
     .createTable('users', function (table) {
       table.string('id', 255).notNullable().primary()
       table.string('name', 255)
-      table.boolean('isAdmin', 255).notNullable().defaultTo(0)
+      table.boolean('admin', 255).notNullable().defaultTo(0)
       table.timestamp('lastWelcomed')
       table.timestamp('lastDisconnected')
       table.timestamps(true, true, true)
