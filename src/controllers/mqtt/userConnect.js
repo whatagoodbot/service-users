@@ -33,7 +33,7 @@ export default async payload => {
     const message = `@${payload.user.nickname} ${welcome.value} ${greetingRecord.greeting}`
     metrics.trackExecution(functionName, 'function', performance.now() - startTime, true)
     // TODO Make this configurable per room
-    if (payload.room.id !== '_3_') {
+    if (!payload.isStarting) {
       return [{
         topic: 'broadcast',
         payload: {
