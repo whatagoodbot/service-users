@@ -30,7 +30,7 @@ export default async payload => {
   if (greetings.length === 0) greetings = await greetingsDb.getGeneric()
   if (greetings.length > 0) {
     const greetingRecord = getRandom.fromArray(greetings)
-    const message = `@${payload.user.nickname} ${welcome.value} ${greetingRecord.greeting}`
+    const message = `👋 @${payload.user.nickname} ${welcome.value} ${greetingRecord.greeting}`
     metrics.trackExecution(functionName, 'function', performance.now() - startTime, true)
     // TODO Make this configurable per room
     if (!payload.isStarting) {
