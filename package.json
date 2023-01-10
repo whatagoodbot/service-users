@@ -1,6 +1,6 @@
 {
   "name": "service-users",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@whatagoodbot/mqtt": "^4.0.0",
-    "@whatagoodbot/rpc": "^2.0.0",
+    "@whatagoodbot/rpc": "^2.0.2",
     "@whatagoodbot/utilities": "^1.0.0",
     "knex": "^2.3.0",
     "mysql": "^2.18.1"
